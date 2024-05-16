@@ -2,6 +2,7 @@ import discord
 import random
 from discord.ext import commands
 texts = ("выкидывайте мусор в мусорки", "не бросайте мусор в реки и озёра да и вообще на природу", "не обижай животных")
+texts2 = ("можно посадить деревья и растения", "не засорять природу", "можно развести животных")
 intents = discord.Intents.default()
 intents.message_content = True
 
@@ -17,8 +18,14 @@ async def hello(ctx):
 
 @bot.command()
 async def priroda(ctx):
-    e = random.choice('texts')
     await ctx.send(random.choice(texts))
 
+@bot.command()
+async def promysorki(ctx):
+    await ctx.send("в разных странах разные мусорные системы в Казахсстане все мусорки как мусорки")
 
-bot.run("No")
+@bot.command()
+async def helpprirode(ctx):
+    await ctx.send(random.choice(texts2))
+
+bot.run("Man No")
