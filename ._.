@@ -1,0 +1,24 @@
+import discord
+import random
+from discord.ext import commands
+texts = ("выкидывайте мусор в мусорки", "не бросайте мусор в реки и озёра да и вообще на природу", "не обижай животных")
+intents = discord.Intents.default()
+intents.message_content = True
+
+bot = commands.Bot(command_prefix='$', intents=intents)
+
+@bot.event
+async def on_ready():
+    print(f'We have logged in as {bot.user}')
+
+@bot.command()
+async def hello(ctx):
+    await ctx.send(f'Привет! Я бот экологист! Пиши $priroda!')
+
+@bot.command()
+async def priroda(ctx):
+    e = random.choice('texts')
+    await ctx.send(random.choice(texts))
+
+
+bot.run("No")
